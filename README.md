@@ -16,11 +16,11 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 ## Install
 
 + Clone repo or download zip
-+ Open upp Google Chrome Extensions. Window -> Extensions. Or goto this url in the Chrome address bar open chrome://extensions/
++ Open upp Google Chrome Extensions. Window -> Extensions. Or goto this url in the Chrome address bar open ``chrome://extensions/``
 + Click + Developer mode ("Programmerarläge" in Swedish)
 + Click Load unpacked extension… ("Hämta okomprimerat tillägg" in Swedish)
 + Navigate to the fruitage folder, where you saved it
-+ Enjoy the improved harvestapp.com!
++ Enjoy the improved [harvestapp.com](harvestapp.com)!
 
 ### Notes
 Fruitage only takes care of numbers using 25% VAT.
