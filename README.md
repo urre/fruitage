@@ -1,7 +1,10 @@
 # Fruitage 
 
+![fruitage](https://cloud.githubusercontent.com/assets/307676/11738804/2d5895c2-9fe6-11e5-8655-f45371167bb6.png)
+
 > Fruitage [noun fruit·age \ˈfrü-tij\] -> the condition or process of bearing fruit
 
+## What?
 Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals without 25% VAT.
 
 ## Features
