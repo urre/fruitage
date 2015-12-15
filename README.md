@@ -12,6 +12,7 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 + Reports → Uninvoiced: Adds columns to the report table. Rows and totals
 + Invoices → Overview: Adds columns to the summary and report table. Rows and totals.
 + Invoices → Report: Adds columns to the report table. Rows and totals.
++ Estimates: Adds columns to the pending, accepted and declined sections.
 
 ## Install
 
@@ -26,6 +27,7 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 Fruitage only takes care of numbers using 25% VAT.
 
 ### Changelog
+2015-12-15: Fruitage now support Estimates
 2015-12-11: First version released
 
 ### License
