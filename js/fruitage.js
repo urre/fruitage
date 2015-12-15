@@ -5,7 +5,6 @@
  * Simple Chrome Extension for Harvestapp.com 
  * that adds extra columns on invoices and reports, showing balance/totals without 25% VAT.
  * Urban Sanden urban@sprintworks.se
- * Sorry for the mess ;)
  *
  */
 
@@ -35,6 +34,9 @@
 
             // Reports -> Uninvoiced
             this.reportsUninvoiced();
+
+            // Estimates
+            this.estimates();
 
         },
 
@@ -236,7 +238,7 @@
                     $(this).find('.td-billable-amount').after('<th><span>Balance without VAT</span></th>');
                 });
 
-                // // Body
+                // Body
                 $('.user-table tbody').find('tr').each(function() {
                     
                     var withoutVAT = $(this).find('td.td-billable-amount').text();
@@ -263,6 +265,27 @@
 
             }
 
+
+        },
+
+        estimates: function() {
+
+            if($('.estimates_won table').length) {
+
+                $('.estimates_won table tbody, .estimates_dashboard_container tbody').find('tr').each(function() {
+                    
+                    var withoutVAT = $(this).find('td.amount').text();
+                    var currency = Fruitage.getCurrency(withoutVAT);
+                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    
+                    if(Fruitage.isDollarOrEuro(currency)) {
+                        $(this).find('.amount').after('<td class="amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
+                    } else {
+                        $(this).find('.amount').after('<td class="amount"><a>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'<span style="font-size: 60%; font-weight: normal"> (Without VAT)</span></a></td>');
+                    }
+                });
+
+            }
 
         }
 
