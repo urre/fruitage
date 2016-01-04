@@ -1,0 +1,34 @@
+{
+  "name": "fruitage",
+  "title": "Chrome Extension for Harvestapp.com that adds extra columns on invoices and reports, showing figures/balance/totals without 25% VAT",
+  "url": "https://github.com/urre/gulpsetup",
+  "author": "Urban Sanden",
+  "version": "1.1.0",
+  "license": "MIT",
+  "dependencies": {
+    "gulp": "*",
+    "gulp-changed": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-header": "*",
+    "gulp-uglify": "*",
+    "gulp-imagemin": "*",
+    "gulp-jshint": "*",
+    "gulp-concat": "*",
+    "gulp-csslint": "*",
+    "browser-sync": "*",
+    "gulp-plumber": "*",
+    "gulp-size": "*",
+    "gulp-cssmin": "*",
+    "gulp-sass": "*",
+    "require-dir": "*",
+    "jshint-stylish": "*",
+    "gulp-rev-collector": "*",
+    "gulp-rev": "*",
+    "imagemin-pngcrush": "*"
+  },
+  "devDependencies": {
+    "imagemin-gifsicle": "^4.2.0",
+    "imagemin-jpegtran": "^4.3.0",
+    "imagemin-pngquant": "^4.1.2"
+  }
+}
