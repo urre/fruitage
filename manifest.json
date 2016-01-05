@@ -28,14 +28,14 @@
        "matches": [
          "*://*.harvestapp.com/*"
        ],
-       // "js": [
-       //   "assets/js/jquery.min.js",
-       //   "assets/js/fruitage.js"
-       // ]
        "js": [
-        "assets/js/bling.js",
-        "assets/js/fruitage-test.js"
+         "assets/js/jquery.min.js",
+         "assets/js/fruitage.js"
        ],
+       // "js": [
+       //  "assets/js/bling.js",
+       //  "assets/js/fruitage-test.js"
+       // ],
        "run_at": "document_idle"
      }
    ]
