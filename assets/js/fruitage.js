@@ -69,7 +69,7 @@
                     var withoutVAT = $(this).find('td').eq(4).find('strong').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
                     
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'');
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                     var withoutVAT_number_clean = parseFloat(withoutVAT_number.replace(",", "."));
 
                     if(Fruitage.isDollarOrEuro(currency)) {
@@ -88,7 +88,7 @@
                 var withoutVAT = $('.js-total-balance').text();
                 var currency = Fruitage.getCurrency(withoutVAT);
 
-                var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'');
+                var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                 var withoutVAT_number_clean = parseFloat(withoutVAT_number.replace(",", "."));
 
                 if(Fruitage.isDollarOrEuro(currency)) {
@@ -108,7 +108,7 @@
                 var withoutVATReceived = $('.invoices-big-data .amount-received').find('h2').text();
                 var currency = Fruitage.getCurrency(withoutVATOpen);
 
-                var withoutVAT_numberOpen = withoutVATOpen.replace(" "+currency+"", "").replace(/ /g,'');
+                var withoutVAT_numberOpen = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                 var withoutVAT_numberOpen_clean = parseFloat(withoutVAT_numberOpen.replace(",", "."));
                 var withoutVAT_numberReceived = withoutVATReceived.replace(" "+currency+"", "").replace(/ /g,'');
                 var withoutVAT_numberReceived_clean = parseFloat(withoutVAT_numberReceived.replace(",", "."));
@@ -140,7 +140,7 @@
                 $('.timesheet_summary tbody').find('tr').each(function(){
                     var withoutVAT = $(this).find('td.amount').find('span').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
 
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('td.amount').eq(2).after('<td><a>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</a></td>');
@@ -153,7 +153,7 @@
                 // Totals
                 var withoutVAT = $('.timesheet_summary').eq(0).find('tfoot .total_amount').text();
                 var currency = Fruitage.getCurrency(withoutVAT);
-                var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
 
                 if(Fruitage.isDollarOrEuro(currency)) {
                     $('.timesheet_summary').eq(0).find('tfoot .total_amount').after('<td class="total_amount"><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</strong></td>');
@@ -181,7 +181,7 @@
                     
                     var withoutVAT = $(this).find('td.ur-unamount').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                     
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('.ur-unamount').after('<td class="ur-unamount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
@@ -193,7 +193,7 @@
                 // Totals
                 var withoutVAT = $('.uninvoiced-report tfoot').find('.ur-unamount').text();
                 var currency = Fruitage.getCurrency(withoutVAT);
-                var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
 
                 if(Fruitage.isDollarOrEuro(currency)) {
                     $('.uninvoiced-report tfoot').find('.ur-unamount').after('<td class="ur-unamount total-amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
@@ -214,7 +214,7 @@
 
                     var withoutVAT = $(this).find('h3').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
 
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('h3').after('<h4 style="color: #aaa; font-size: 150%;">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'<span style="font-size: 45%;">(Without VAT)</span><h4>');
@@ -227,16 +227,16 @@
 
 
                 // Header
-                $('.user-table thead').find('tr').each(function(){
+                $('.user-table thead, .client-table thead').find('tr').each(function(){
                     $(this).find('.td-billable-amount').after('<th><span>Balance without VAT</span></th>');
                 });
 
                 // Body
-                $('.user-table tbody').find('tr').each(function() {
+                $('.user-table tbody, .client-table tbody').find('tr').each(function() {
                     
                     var withoutVAT = $(this).find('td.td-billable-amount').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                     
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('.td-billable-amount').after('<td class="td-billable-amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
@@ -246,14 +246,14 @@
                 });
 
                 // Totals
-                var withoutVAT = $('.user-table tfoot').find('.td-billable-amount').text();
+                var withoutVAT = $('.user-table tfoot, .client-table tfoot').find('.td-billable-amount').text();
                 var currency = Fruitage.getCurrency(withoutVAT);
-                var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".")
 
                 if(Fruitage.isDollarOrEuro(currency)) {
-                    $('.user-table tfoot').find('.td-billable-amount').after('<td class="td-billable-amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
+                    $('.user-table tfoot, .client-table tfoot').find('.td-billable-amount').after('<td class="td-billable-amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
                 } else {
-                    $('.user-table tfoot').find('.td-billable-amount').after('<td class="td-billable-amount">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</td>');
+                    $('.user-table tfoot, .client-table tfoot').find('.td-billable-amount').after('<td class="td-billable-amount">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</td>');
                 }
 
             }
@@ -269,7 +269,7 @@
                     
                     var withoutVAT = $(this).find('td.amount').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(" "+currency+"", "").replace(/ /g,'').replace(",", ".");
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
                     
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('.amount').after('<td class="amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
