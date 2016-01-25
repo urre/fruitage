@@ -1,38 +1,35 @@
 {
   "manifest_version": 2,
-
   "name": "Fruitage for Harvest",
   "description": "Chrome Extension for Harvestapp.com that adds extra columns on invoices and reports, showing figures/balance/totals without 25% VAT",
-  "version": "1.1.0",
-
+  "version": "1.2.0",
   "icons": {
     "128": "assets/images/fruitage.png"
   },
-
   "permissions": [
-     "*://*.harvestapp.com/*"
-   ],
-   "web_accessible_resources": [
-     "dist/fruitage.css"
-   ],
-   "content_scripts": [
-     {
-       "matches": [
-         "*://*.harvestapp.com/*"
-       ],
-       "css": [
-         "dist/fruitage.css"
-       ]
-     },
-     {
-       "matches": [
-         "*://*.harvestapp.com/*"
-       ],
-       "js": [
-         "assets/js/jquery.min.js",
-         "assets/js/fruitage.js"
-       ],
-       "run_at": "document_idle"
-     }
-   ]
+    "*://*.harvestapp.com/*"
+  ],
+  "web_accessible_resources": [
+    "dist/fruitage.css"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.harvestapp.com/*"
+      ],
+      "css": [
+        "dist/fruitage.css"
+      ]
+    },
+    {
+      "matches": [
+        "*://*.harvestapp.com/*"
+      ],
+      "js": [
+        "assets/js/jquery.min.js",
+        "assets/js/fruitage.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
 }
