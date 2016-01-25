@@ -15,7 +15,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "scripts": {
-    "start": "webpack-dev-server --hot --inline"
+    "start": "webpack-dev-server --hot --inline",
+    "test": "webpack"
   },
   "dependencies": {
     "jquery": "^2.2.0",
