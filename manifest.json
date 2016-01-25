@@ -17,17 +17,8 @@
       "matches": [
         "*://*.harvestapp.com/*"
       ],
-      "css": [
-        "dist/fruitage.css"
-      ]
-    },
-    {
-      "matches": [
-        "*://*.harvestapp.com/*"
-      ],
       "js": [
-        "assets/js/jquery.min.js",
-        "assets/js/fruitage.js"
+        "build/fruitage.js"
       ],
       "run_at": "document_idle"
     }
