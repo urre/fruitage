@@ -92,9 +92,9 @@
                 var withoutVAT_number_clean = parseFloat(withoutVAT_number.replace(",", "."));
 
                 if(Fruitage.isDollarOrEuro(currency)) {
-                    $('.invoice-totals').find('td').eq(1).after('<td style="text-align: left;"><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</strong></td>');                
+                    $('.js-total-balance').after('<td style="text-align: left;"><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</strong></td>');                
                 } else {
-                    $('.invoice-totals').find('td').eq(1).after('<td style="text-align: left;"><strong>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</strong></td>');
+                    $('.js-total-balance').after('<td style="text-align: left;"><strong>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</strong></td>');
                 }
             }
 
@@ -107,21 +107,20 @@
                 var withoutVATOpen = $('.invoices-big-data .amount-open').find('h2').text();
                 var withoutVATReceived = $('.invoices-big-data .amount-received').find('h2').text();
                 var currency = Fruitage.getCurrency(withoutVATOpen);
-
-                var withoutVAT_numberOpen = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
-                var withoutVAT_numberOpen_clean = parseFloat(withoutVAT_numberOpen.replace(",", "."));
-                var withoutVAT_numberReceived = withoutVATReceived.replace(" "+currency+"", "").replace(/ /g,'');
-                var withoutVAT_numberReceived_clean = parseFloat(withoutVAT_numberReceived.replace(",", "."));
+                var withoutVAT_numberOpen = parseFloat(withoutVATOpen.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", "."));
+                
+                var withoutVAT_numberReceived = parseFloat(withoutVATReceived.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", "."));
+                
 
                 if(Fruitage.isDollarOrEuro(currency)) {
 
-                    $('.invoices-big-data .amount-open').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberOpen_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
+                    $('.invoices-big-data .amount-open').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberOpen*0.8).toFixed(2))+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
 
-                    $('.invoices-big-data .amount-received').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberReceived_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
+                    $('.invoices-big-data .amount-received').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberReceived*0.8).toFixed(2))+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
                 } else {
-                    $('.invoices-big-data .amount-open').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberOpen_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
+                    $('.invoices-big-data .amount-open').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberOpen*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
 
-                    $('.invoices-big-data .amount-received').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberReceived_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
+                    $('.invoices-big-data .amount-received').find('h2').eq(0).after('<h2 style="color: #aaa; font-size: 150%;">'+Fruitage.numberWithCommas(parseFloat(withoutVAT_numberReceived*0.8).toFixed(2))+' '+currency+'<span style="font-size: 45%;"> (Without VAT)</span><h2>');
                 }
 
             }
@@ -269,8 +268,7 @@
                     
                     var withoutVAT = $(this).find('td.amount').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
-                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
-                    
+                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");                    
                     if(Fruitage.isDollarOrEuro(currency)) {
                         $(this).find('.amount').after('<td class="amount">'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</td>');
                     } else {
