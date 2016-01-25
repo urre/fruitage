@@ -12,11 +12,13 @@
     "babel-preset-stage-2": "^6.3.13",
     "mocha": "^2.3.4",
     "webpack": "^1.12.11",
-    "webpack-dev-server": "^1.14.1"
+    "webpack-dev-server": "^1.14.1",
+    "jshint": "^2.6.0"
   },
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
-    "test": "webpack"
+    "build": "webpack",
+    "test": "./node_modules/jshint/bin/jshint assets/modules/index.js"
   },
   "dependencies": {
     "jquery": "^2.2.0",

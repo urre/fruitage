@@ -31,7 +31,7 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 
 ## Build
 
-	webpack
+	npm build
 
 ### Notes
 Fruitage only takes care of numbers using 25% VAT.
