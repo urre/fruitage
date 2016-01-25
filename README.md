@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/urre/fruitage.svg?branch=master)](https://travis-ci.org/urre/fruitage)
+
 # Fruitage 
 
 ![fruitage](https://cloud.githubusercontent.com/assets/307676/11738804/2d5895c2-9fe6-11e5-8655-f45371167bb6.png)
