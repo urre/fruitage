@@ -27,6 +27,7 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 Fruitage only takes care of numbers using 25% VAT.
 
 ### Changelog
++ 2016-01-25: Support all currency formats
 + 2015-12-15: Fruitage now support Estimates
 + 2015-12-11: First version released
 
