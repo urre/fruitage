@@ -18,22 +18,22 @@
             this.invoicesOverview();
 
             //  Invoice -> Overview. Add new column with total
-            this.invoicesTotals();
+            // this.invoicesTotals();
 
             // Invoice -> Overview. Add figures to the summary section
-            this.invoicesSummary();
+            // this.invoicesSummary();
 
             // Invoice -> Report
-            this.invoiceReports();
+            // this.invoiceReports();
 
             // Reports -> Time
-            this.reportsTime();
+            // this.reportsTime();
 
             // Reports -> Uninvoiced
-            this.reportsUninvoiced();
+            // this.reportsUninvoiced();
 
             // Estimates
-            this.estimates();
+            // this.estimates();
 
         },
 
@@ -51,10 +51,27 @@
 
         },
 
+        getCurrencySymbol: function(string) {
+
+                // Currency format:
+
+                // $345 (symbol before)
+                // 345$ (symbol after)
+                // 345 USD (ISO code after)
+                // USD 345 (ISO code before)
+                // $345 USD (symbol before, ISO code after)
+                // USD $345 (ISO code before, symbol before)
+                // 345$ USD (symbol after, ISO code after)
+                // USD 345$ (ISO code before, symbol after)
+
+        },
+
         numberWithCommas: function(x) {
-
             return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        },
 
+        convertStringToNumber: function(str) {
+            return parseFloat(str.replace(',','.').replace(' ',''))
         },
 
         invoicesOverview: function() {
@@ -68,15 +85,13 @@
                     
                     var withoutVAT = $(this).find('td').eq(4).find('strong').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
+                    var withoutVAT_number = Fruitage.convertStringToNumber(withoutVAT);
                     
-                    var withoutVAT_number = withoutVAT.replace(/[^0-9\.,\n]|,[^0-9]/g, "").replace(",", ".");
-                    var withoutVAT_number_clean = parseFloat(withoutVAT_number.replace(",", "."));
+                    console.log('withoutVAT: '+withoutVAT);
+                    console.log('withoutVAT_number: '+withoutVAT_number);
+                    console.log('currency: '+currency);
 
-                    if(Fruitage.isDollarOrEuro(currency)) {
-                        $(this).find('td').eq(4).after('<td ><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'<strong></td>');
-                    } else {
-                        $(this).find('td').eq(4).after('<td ><strong>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number_clean*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'<strong></td>');
-                    }
+                    $(this).find('td').eq(4).after('<td ><strong>'+withoutVAT_number*0.8+'<strong></td>');
                 });
             }
 

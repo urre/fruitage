@@ -5,7 +5,7 @@
   "author": "Urban Sanden",
   "version": "1.2.2",
   "license": "MIT",
-  "dependencies": {
+  "devDependencies": {
     "gulp": "*",
     "gulp-changed": "*",
     "gulp-autoprefixer": "*",
@@ -20,15 +20,11 @@
     "gulp-size": "*",
     "gulp-cssmin": "*",
     "gulp-sass": "*",
-    "require-dir": "*",
-    "jshint-stylish": "*",
-    "gulp-rev-collector": "*",
-    "gulp-rev": "*",
-    "imagemin-pngcrush": "*"
+    "require-dir": "*"
   },
-  "devDependencies": {
-    "imagemin-gifsicle": "^4.2.0",
-    "imagemin-jpegtran": "^4.3.0",
-    "imagemin-pngquant": "^4.1.2"
+  "dependencies": {
+    "install": "^0.4.1",
+    "npm": "^3.5.3",
+    "numeral": "^1.5.3"
   }
 }

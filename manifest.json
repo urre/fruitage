@@ -9,24 +9,14 @@
   "permissions": [
     "*://*.harvestapp.com/*"
   ],
-  "web_accessible_resources": [
-    "dist/fruitage.css"
-  ],
   "content_scripts": [
-    {
-      "matches": [
-        "*://*.harvestapp.com/*"
-      ],
-      "css": [
-        "dist/fruitage.css"
-      ]
-    },
     {
       "matches": [
         "*://*.harvestapp.com/*"
       ],
       "js": [
         "assets/js/jquery.min.js",
+        "node_modules/numeral/numeral.js",
         "assets/js/fruitage.js"
       ],
       "run_at": "document_idle"
