@@ -27,6 +27,7 @@
       ],
       "js": [
         "assets/js/jquery.min.js",
+        "assets/js/dummydata.js",
         "assets/js/fruitage.js"
       ],
       "run_at": "document_idle"

@@ -44,9 +44,13 @@ var Fruitage = (function() {
 
     fruitage.invoicesOverview = function() {
 
-        $('.js-invoices-table thead tr').forEach(function (el) {
-            console.log(this);
-        });
+        var balanceCols = $('.js-invoices-table thead tr .col-balance');
+
+        for (var i = 0; i < balanceCols.length; ++i ) {
+            var tableHeader = document.createElement("th");
+            tableHeader.innerHTML = "Balance without VA";
+            balanceCols[i].parentElement.appendChild(tableHeader);
+        }
 
         // $('.js-invoices-table thead tr').each(function() {
         //     $(this).find('.col-balance').after('<th>Balance without VAT</th>');
