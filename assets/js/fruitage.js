@@ -59,7 +59,7 @@
 
                 $('.filtersum-invoice-totals').remove();
 
-                $(".invoices-table tfoot").append('<tr class="filtersum-invoice-totals row-invoices-total" style="display: table-row;"><td class="col-total text-align-right" colspan="4"><strong>Total</strong></td><td class="col-total-value js-total-balance"><strong>'+Fruitage.formatNumber(sum)+' invoices</strong><br></td><td style="text-align: left;"><strong class="filtersumsum">'+Fruitage.formatNumber(sum*0.8)+' SEK</strong></td></tr>');
+                $(".invoices-table tfoot").append('<tr class="filtersum-invoice-totals row-invoices-total" style="display: table-row;"><td class="col-total text-align-right" colspan="4"><strong>Total</strong></td><td class="col-total-value js-total-balance"><strong>'+Fruitage.formatNumber(sum)+' SEK</strong><br></td><td style="text-align: left;"><strong class="filtersumsum">'+Fruitage.formatNumber(sum*0.8)+' SEK</strong></td></tr>');
 
             });
 
@@ -153,8 +153,13 @@
                     var withoutVAT = $(this).find('td').eq(4).find('strong').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
                     var withoutVAT_number = Fruitage.convertStringToNumber(withoutVAT);
-                    
-                    $(this).find('td').eq(4).after('<td ><strong>'+withoutVAT_number*0.8+'<strong></td>');
+
+                    if(Fruitage.isDollarOrEuro(currency)) {
+                        $(this).find('td').eq(4).after('<td style="text-align: left;"><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</strong></td>');                
+                    } else {
+                        $(this).find('td').eq(4).after('<td style="text-align: left;"><strong>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</strong></td>');
+                    }
+
                 });
             }
 
