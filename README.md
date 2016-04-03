@@ -5,9 +5,14 @@
 > Fruitage [noun fruit·age \ˈfrü-tij\] → the condition or process of bearing fruit
 
 ## What?
-Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals without 25% VAT.
+Simple Chrome Extension that enhances Harvestapp.com
 
-## Features
+### Features
+
+#### Adds a realtime search field to the invoices table
+
+#### Adds figures/balance/totals without 25% VAT.
+
 + Reports → Time: Adds columns to the summary and table. Rows and totals. (Only for the Staff table right now)
 + Reports → Uninvoiced: Adds columns to the report table. Rows and totals
 + Invoices → Overview: Adds columns to the summary and report table. Rows and totals.
@@ -25,8 +30,10 @@ Simple Chrome Extension for Harvestapp.com that adds figures/balance/totals with
 
 ### Notes
 Fruitage only takes care of numbers using 25% VAT.
+Fruitage assumes the currency being SEK (Swedish krona)
 
 ### Changelog
++ 2016-04-03: Add search field to /invoices
 + 2016-01-25: Support all currency formats
 + 2015-12-15: Fruitage now support Estimates
 + 2015-12-11: First version released

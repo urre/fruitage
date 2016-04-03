@@ -1,3 +1,4 @@
+
 /**
 
  *
@@ -18,24 +19,105 @@
             this.invoicesOverview();
 
             //  Invoice -> Overview. Add new column with total
-            // this.invoicesTotals();
+            this.invoicesTotals();
 
             // Invoice -> Overview. Add figures to the summary section
-            // this.invoicesSummary();
+            this.invoicesSummary();
 
             // Invoice -> Report
-            // this.invoiceReports();
+            this.invoiceReports();
 
             // Reports -> Time
-            // this.reportsTime();
+            this.reportsTime();
 
             // Reports -> Uninvoiced
-            // this.reportsUninvoiced();
+            this.reportsUninvoiced();
 
             // Estimates
-            // this.estimates();
+            this.estimates();
+
+            // Invoices filter
+            this.invoicesfilter();
 
         },
+
+        sumFilteredTable: function() {
+
+            var sum = 0;
+            var counter = 0;
+            // iterate through each td based on class and add the values
+            $(".invoices-table .col-balance").each(function() {
+                
+
+                var value = $(this).text().replace(' SEK', '').replace(',', '.').replace(' ', '');
+                var visible = $(this).parent().attr('style');
+
+                if($(this).parent().css('display') == 'table-row') {
+                        sum += parseFloat(value);
+                        ++counter;
+                }
+
+                $('.filtersum-invoice-totals').remove();
+
+                $(".invoices-table tfoot").append('<tr class="filtersum-invoice-totals row-invoices-total" style="display: table-row;"><td class="col-total text-align-right" colspan="4"><strong>Total</strong></td><td class="col-total-value js-total-balance"><strong>'+Fruitage.formatNumber(sum)+' SEK</strong><br></td><td style="text-align: left;"><strong class="filtersumsum">'+Fruitage.formatNumber(sum*0.8)+' SEK</strong></td></tr>');
+
+            });
+
+
+        },
+
+        invoicesfilter: function() {
+
+            if($('.js-invoice-overview-wrapper').length) {
+                $('.js-tab-selector').eq(1).after('<input type="text" id="fruitagetablefilter" style="display: inline-block; margin-left: .5rem; width: 300px;" placeholder="Filter by person, company, date, amount...">')
+
+                var $rows = $('.invoices-table tr');
+                $('#fruitagetablefilter').keyup(function() {
+                    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+
+                    $rows.show().filter(function() {
+                        var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
+                        return !~text.indexOf(val);
+                    }).hide();                    
+                    
+                    Fruitage.sumFilteredTable();
+
+                });
+            }
+        },
+        
+         formatNumber: function(num, userOpts) {
+             var defaults = {
+                 decimals: 2,
+                 prefix: '',
+                 suffix: '',
+                 separator: {
+                     decimal: ',',
+                     thousand: ' '
+                 }
+             }, opts;
+         
+             userOpts = userOpts || {};
+             opts = $.extend({}, defaults, userOpts);
+         
+             // Cast the string to a number
+             if(typeof(num) === 'string') {
+                 num = 1 * num;
+             }
+             if(!isFinite(num)) {
+                 return false;
+             }
+             num = num.toFixed(opts.decimals);
+         
+             // Replace the dot
+             num = num.replace(/\./, opts.separator.decimal);
+         
+             // Set the thousand separator
+             num = num.replace(/\B(?=(\d{3})+(?!\d))/g, opts.separator.thousand);
+             num = opts.prefix + num + opts.suffix;
+         
+             return num;
+         },
 
         isDollarOrEuro: function(currency) {
             
@@ -48,21 +130,6 @@
         getCurrency: function(currency) {
             
             return currency.match(/[a-zA-Z]+/g);
-
-        },
-
-        getCurrencySymbol: function(string) {
-
-                // Currency format:
-
-                // $345 (symbol before)
-                // 345$ (symbol after)
-                // 345 USD (ISO code after)
-                // USD 345 (ISO code before)
-                // $345 USD (symbol before, ISO code after)
-                // USD $345 (ISO code before, symbol before)
-                // 345$ USD (symbol after, ISO code after)
-                // USD 345$ (ISO code before, symbol after)
 
         },
 
@@ -86,12 +153,13 @@
                     var withoutVAT = $(this).find('td').eq(4).find('strong').text();
                     var currency = Fruitage.getCurrency(withoutVAT);
                     var withoutVAT_number = Fruitage.convertStringToNumber(withoutVAT);
-                    
-                    console.log('withoutVAT: '+withoutVAT);
-                    console.log('withoutVAT_number: '+withoutVAT_number);
-                    console.log('currency: '+currency);
 
-                    $(this).find('td').eq(4).after('<td ><strong>'+withoutVAT_number*0.8+'<strong></td>');
+                    if(Fruitage.isDollarOrEuro(currency)) {
+                        $(this).find('td').eq(4).after('<td style="text-align: left;"><strong>'+currency+' '+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+'</strong></td>');                
+                    } else {
+                        $(this).find('td').eq(4).after('<td style="text-align: left;"><strong>'+Fruitage.numberWithCommas(parseFloat(withoutVAT_number*0.8).toFixed(2)).replace(",", " ").replace(".", ",")+' '+currency+'</strong></td>');
+                    }
+
                 });
             }
 
