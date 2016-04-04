@@ -11,15 +11,15 @@ Concatinate, uglify
 -------------------------------------------------------------------*/
 gulp.task('scripts', function() {
     gulp.src([
-      config.scripts.base + 'bling.js',
-      config.scripts.base + 'fruitage-test.js'
+      config.scripts.base + 'jquery.min.js',
+      config.scripts.base + 'fruitage.js'
     ])
     .pipe(plumber())
     .on('error', function(err) {
         console.log(err.message);
     })
     .pipe(concat('fruitage.js'))
-    //.pipe(uglify())
+    .pipe(uglify())
     .pipe(size())
     .pipe(gulp.dest(config.scripts.dist))
 });
