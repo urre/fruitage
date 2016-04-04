@@ -1,6 +1,6 @@
 # Fruitage 
 
-![fruitage](https://cloud.githubusercontent.com/assets/307676/11738804/2d5895c2-9fe6-11e5-8655-f45371167bb6.png  | width=100)
+![fruitage](https://cloud.githubusercontent.com/assets/307676/11738804/2d5895c2-9fe6-11e5-8655-f45371167bb6.png | width=100)
 
 > Fruitage [noun fruit·age \ˈfrü-tij\] → the condition or process of bearing fruit
 
