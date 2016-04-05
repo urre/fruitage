@@ -9,7 +9,7 @@ Simple Chrome Extension that enhances Harvestapp.com
 
 ### Features
 
-#### Adds a realtime search field to the invoices table
+#### ⚡NEW: Adds a realtime search field to the invoices table
 
 #### Adds figures/balance/totals without 25% VAT.
 
