@@ -1,14 +1,9 @@
 var gulp = require('gulp');
-var size = require('gulp-size');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var header = require('gulp-header');
 var plumber = require('gulp-plumber');
 var config  = require('../config').basePaths;
 
-/*-------------------------------------------------------------------
-Concatinate, uglify
--------------------------------------------------------------------*/
 gulp.task('scripts', function() {
     gulp.src([
       config.scripts.base + 'jquery.min.js',
@@ -20,6 +15,5 @@ gulp.task('scripts', function() {
     })
     .pipe(concat('fruitage.js'))
     .pipe(uglify())
-    .pipe(size())
     .pipe(gulp.dest(config.scripts.dist))
 });

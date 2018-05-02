@@ -39,6 +39,13 @@
             // Invoices filter
             this.invoicesfilter();
 
+            // Charts
+            this.addCharts();
+
+        },
+
+        addCharts: function() {
+
             var rowData = [];
 
             var CSS_COLOR_NAMES = ["#7FDBFF", "#39CCCC", "#3D9970", "#2ECC40", "#01FF70", "#FFDC00", "#001f3f", "#0074D9", "#8142c9", "#d58eea", "#98c31e", "#2493ed", "#843d49", "#aaa5a8", "#82e99d"];
@@ -57,7 +64,7 @@
                 // Time charts
                 $("<div class='fruitage-chart' style='max-width: 60em; margin: 0 auto;'><div id='chart-1' style='height: 400px'></div></div>").insertAfter("main");
                 $("<div class='fruitage-cta' style='text-align: center; margin-top: 1rem; margin-bottom: 1rem;'> <a class='hui-button hui-button-small js-start-timer' onClick='history.go(0)'>Refresh chart</a>").insertAfter(".fruitage-chart");
-                $("<h3 style='text-align: center; margin-bottom: 2rem;'>Chart</h3>").insertBefore("#chart-1");
+                $("<h3 style='text-align: center; margin-bottom: 2rem;'>Overview</h3>").insertBefore("#chart-1");
 
                 new Chartkick.PieChart("chart-1", rowData, { colors: CSS_COLOR_NAMES, donut: false, legend: false, animation: { "duration": 3000, easing: 'easeOutQuad' } });
 
@@ -80,11 +87,8 @@
                 $("<div class='fruitage-cta' style='text-align: center; margin-top: 1rem; margin-bottom: 1rem;'> <a class='hui-button hui-button-small js-start-timer' onClick='history.go(0)'>Refresh chart</a>").insertAfter(".fruitage-chart");
 
                 new Chartkick.PieChart("chart-1", invoiceData, { colors: CSS_COLOR_NAMES, donut: false, legend: false, animation: { easing: 'easeOutQuad' } });
-                $("<h3 style='text-align: center; margin-bottom: 2rem;'>Open invoices</h3>").insertBefore("#chart-1");
+                $("<h3 style='text-align: center; margin-bottom: 2rem;'>Overview</h3>").insertBefore("#chart-1");
             }
-
-
-
         },
 
         reDrawChart: function () {

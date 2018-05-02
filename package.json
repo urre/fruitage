@@ -8,26 +8,26 @@
   "scripts": {
     "start": "gulp serve"
   },
-  "devDependencies": {
-    "gulp": "*",
-    "gulp-changed": "*",
-    "gulp-autoprefixer": "*",
-    "gulp-header": "*",
-    "gulp-uglify": "*",
-    "gulp-imagemin": "*",
-    "gulp-jshint": "*",
-    "gulp-concat": "*",
-    "gulp-csslint": "*",
-    "browser-sync": "*",
-    "gulp-plumber": "*",
-    "gulp-size": "*",
-    "gulp-cssmin": "*",
-    "gulp-sass": "*",
-    "require-dir": "*"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/urre/fruitage.git"
   },
-  "dependencies": {
-    "install": "^0.4.1",
-    "npm": "^3.5.3",
-    "numeral": "^1.5.3"
+  "keywords": "harvest",
+  "bugs": {
+    "url": "https://github.com/urre/fruitage/issues"
+  },
+  "homepage": "https://github.com/urre/fruitage#readme",
+  "devDependencies": {
+    "browser-sync": "^2.24.1",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^5.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-cssmin": "^0.2.0",
+    "gulp-plumber": "^1.2.0",
+    "gulp-sass": "^4.0.1",
+    "gulp-uglify": "^3.0.0",
+    "numeral": "^2.0.6",
+    "require-dir": "^1.0.0"
   }
 }
