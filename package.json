@@ -5,6 +5,9 @@
   "author": "Urban Sanden",
   "version": "1.2.2",
   "license": "MIT",
+  "scripts": {
+    "start": "gulp serve"
+  },
   "devDependencies": {
     "gulp": "*",
     "gulp-changed": "*",
